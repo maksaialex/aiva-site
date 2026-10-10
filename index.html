@@ -34,6 +34,7 @@
             background-repeat: no-repeat;
             background-position: center top;
             background-size: cover;
+            background-attachment: scroll;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -211,7 +212,7 @@
         }
 
         /* ============================================
-           КАРТОЧКИ (с перспективной гранью справа-снизу)
+           КАРТОЧКИ
            ============================================ */
         .services {
             padding-top: calc(var(--u) * 171);
@@ -233,7 +234,8 @@
                 radial-gradient(80% 70% at 100% 100%, rgba(110, 160, 230, 0.2) 0%, rgba(110, 160, 230, 0) 60%),
                 linear-gradient(160deg, rgba(38, 72, 118, 0.42) 0%, rgba(12, 30, 60, 0.38) 100%);
             box-shadow:
-                inset calc(var(--u) * 1.5) calc(var(--u) * 1.5) 0 rgba(255, 255, 255, 0.3);
+                inset calc(var(--u) * 2) calc(var(--u) * 2) 0 rgba(255, 255, 255, 0.5),
+                inset 0 0 calc(var(--u) * 20) rgba(150, 190, 240, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 1;
@@ -383,12 +385,9 @@
         /* ============================================
            МОБИЛЬНАЯ ВЕРСИЯ
            ============================================ */
-                @media (max-width: 767px) {
+        @media (max-width: 767px) {
             .landing {
                 --u: 1px;
-                background-size: cover;
-                background-position: center top;
-                background-attachment: scroll;
             }
             .container {
                 padding-inline: 20px;
@@ -567,7 +566,6 @@
 <body>
     <div class="landing">
 
-        <!-- Шапка -->
         <header class="header">
             <a href="#" class="logo" aria-label="ЭЙВА Платинум — на главную">
                 <span class="logo-mark">ЭЙВА</span>
@@ -582,7 +580,6 @@
         </header>
 
         <main>
-            <!-- Hero -->
             <section class="hero container">
                 <h1 class="hero-title">
                     <span>Инвестиции</span>
@@ -607,7 +604,6 @@
                 </div>
             </section>
 
-            <!-- Инвестиции и финансирование -->
             <section class="services container">
                 <h2 class="section-title">Инвестиции и финансирование</h2>
                 <div class="cards">
@@ -634,7 +630,6 @@
                 </div>
             </section>
 
-            <!-- Как это работает -->
             <section id="about" class="steps container">
                 <h2 class="section-title">Как это работает</h2>
                 <ol class="steps-list">
@@ -656,7 +651,6 @@
                 </ol>
             </section>
 
-            <!-- CTA -->
             <section id="contacts" class="cta container">
                 <h2 class="section-title">Обсудим ваши задачи</h2>
                 <p class="cta-text">Подберем решение для инвестиций<br>или финансирования вашего бизнеса.</p>
@@ -666,7 +660,6 @@
             </section>
         </main>
 
-        <!-- Подвал -->
         <footer class="footer">
             <div class="footer-inner">
                 <a href="#" class="logo">
