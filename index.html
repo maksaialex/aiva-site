@@ -6,10 +6,10 @@
     <title>ЭЙВА ПЛАТИНУМ — Инвестиции для бизнеса</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* ============================================
-           БАЗА (из landing.css v0, адаптировано под HTML)
+           БАЗА
            ============================================ */
         * {
             margin: 0;
@@ -18,7 +18,6 @@
         }
 
         .landing {
-            /* --u = 1 "дизайн-пиксель" от фрейма 1280px */
             --u: min(1px, calc(100vw / 1280));
             --text: #f3f6fb;
             --text-soft: #c3cfdf;
@@ -31,10 +30,10 @@
             color: var(--text);
             font-family: 'Onest', system-ui, sans-serif;
             background-color: #030a16;
-            background-image: url('bg.png');
+            background-image: url('bg.jpg');
             background-repeat: no-repeat;
             background-position: center top;
-            background-size: 100% 100%;
+            background-size: cover;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -60,8 +59,8 @@
             white-space: nowrap;
         }
         .logo-mark {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
             font-size: calc(var(--u) * 62);
             line-height: 1;
             letter-spacing: 0.03em;
@@ -128,7 +127,7 @@
             background: linear-gradient(180deg, rgba(42, 78, 125, 0.42) 0%, rgba(10, 28, 56, 0.42) 100%);
             box-shadow:
                 inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 0 calc(var(--u) * 18) rgba(70, 130, 210, 0.16);
+                0 0 calc(var(--u) * 18) rgba(70, 130, 210, 0.25);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
@@ -212,7 +211,7 @@
         }
 
         /* ============================================
-           КАРТОЧКИ
+           КАРТОЧКИ (с перспективной гранью справа-снизу)
            ============================================ */
         .services {
             padding-top: calc(var(--u) * 171);
@@ -234,11 +233,30 @@
                 radial-gradient(80% 70% at 100% 100%, rgba(110, 160, 230, 0.2) 0%, rgba(110, 160, 230, 0) 60%),
                 linear-gradient(160deg, rgba(38, 72, 118, 0.42) 0%, rgba(12, 30, 60, 0.38) 100%);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.18),
-                inset 0 0 calc(var(--u) * 24) rgba(130, 175, 235, 0.12),
-                0 0 calc(var(--u) * 22) rgba(70, 130, 215, 0.22);
+                inset calc(var(--u) * 1.5) calc(var(--u) * 1.5) 0 rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: calc(var(--u) * -8);
+            bottom: calc(var(--u) * -8);
+            border-radius: calc(var(--u) * 10);
+            border: 1px solid rgba(175, 208, 248, 0.22);
+            -webkit-mask-image:
+                linear-gradient(160deg, transparent 0%, black 12%, black 88%, transparent 100%),
+                radial-gradient(ellipse 60% 30% at 50% 100%, transparent 0%, black 100%);
+            mask-image:
+                linear-gradient(160deg, transparent 0%, black 12%, black 88%, transparent 100%),
+                radial-gradient(ellipse 60% 30% at 50% 100%, transparent 0%, black 100%);
+            -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+            filter: blur(0.4px);
+            z-index: -1;
         }
         .card-title {
             margin: 0;
@@ -439,6 +457,12 @@
             .card {
                 min-height: 0;
                 padding: 22px 22px 22px;
+            }
+            .card::before {
+                top: 6px;
+                left: 6px;
+                right: -6px;
+                bottom: -6px;
             }
             .card-title {
                 font-size: 26px;
